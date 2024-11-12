@@ -1,0 +1,10 @@
+*.log
+*.pem
+
+certbot/conf/*
+certbot/log/*
+certbot/www/*
+certbot/log/*
+certbot/log/*
+data/*
+!data/empty.txt

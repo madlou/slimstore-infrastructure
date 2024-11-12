@@ -1,0 +1,82 @@
+networks:
+    dev:
+        driver: bridge
+
+services:
+
+    certbot:
+        image: certbot/certbot:latest
+        ports:
+            - "80:80"
+        command: certonly --email 'madlou@gmail.com' --non-interactive --agree-tos --standalone --preferred-challenges http-01 --http-01-port 80 --cert-name 'slimstore' -d 'oracle.matthews.cloud,slimstore.matthews.cloud' -v
+        volumes:
+            - ./certbot/www/:/var/www/certbot/:rw
+            - ./certbot/conf/:/etc/letsencrypt/:rw
+            - ./certbot/log/letsencrypt/:/var/log/letsencrypt/:rw
+
+    db:
+        image: mariadb:10.6
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: db1
+            MYSQL_USER: user1
+            MYSQL_PASSWORD: 1234
+        volumes:
+            - ./data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - dev
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: unless-stopped
+        ports:
+            - 3307:80
+        depends_on:
+            - db
+        environment:
+            - PMA_ARBITRARY=1
+        networks:
+            - dev
+
+    slimstorebackend:
+        image: slimstore-backend
+        restart: unless-stopped
+        ports:
+            - 8000:8000
+        depends_on: 
+            - db
+        networks:
+            - dev
+      
+    slimstorefrontend:
+        image: slimstore-frontend
+        depends_on:
+            - slimstorebackend
+        restart: unless-stopped
+        ports:
+            - 3000:3000
+        networks:
+            - dev
+
+    nginx:
+        image: nginx
+        depends_on:
+            certbot:
+                condition: service_completed_successfully
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./html/:/usr/share/nginx/html:ro
+            - ./nginx/conf/:/etc/nginx/conf.d/:rw
+            - ./certbot/conf/:/etc/nginx/ssl/:ro
+            - ./certbot/www:/var/www/certbot/:ro
+        environment:
+            - NGINX_HOST=oracle.matthews.cloud,slimstore.matthews.cloud
+            - NGINX_PORT=80,443
+        networks:
+            - dev
