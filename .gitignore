@@ -6,5 +6,7 @@ certbot/log/*
 certbot/www/*
 certbot/log/*
 certbot/log/*
-data/*
-!data/empty.txt
+database/*
+!database/empty.txt
+redis/*
+!redis/empty.txt
