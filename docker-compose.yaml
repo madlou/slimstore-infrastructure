@@ -80,8 +80,6 @@ services:
             - NGINX_PORT=80,443
         networks:
             - dev
-        extra_hosts:
-            - host.docker.internal:host-gateway
 
     redis:
         image: redis:7.4-alpine
