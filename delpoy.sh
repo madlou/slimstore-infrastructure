@@ -1,2 +1,3 @@
 #!/bin/bash
-docker compose down && docker compose up -d
+COMPOSE_PROJECT_NAME=slimstore docker compose down
+COMPOSE_PROJECT_NAME=slimstore docker compose up -d

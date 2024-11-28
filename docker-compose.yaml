@@ -40,7 +40,7 @@ services:
         networks:
             - dev
 
-    slimstorebackend:
+    backend:
         image: slimstore-backend
         restart: unless-stopped
         ports:
@@ -50,10 +50,10 @@ services:
         networks:
             - dev
       
-    slimstorefrontend:
+    frontend:
         image: slimstore-frontend
         depends_on:
-            - slimstorebackend
+            - backend
         restart: unless-stopped
         ports:
             - 3000:3000
