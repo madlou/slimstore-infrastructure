@@ -1,2 +1,2 @@
 # Diagram
-![slimstore drawio](https://github.com/user-attachments/assets/6f227fe5-8d3b-42a2-9395-0823eb8fd4f2)
+![slimstore drawio](https://github.com/user-attachments/assets/a5cf6318-dca1-492a-9f91-69358774ca11)
