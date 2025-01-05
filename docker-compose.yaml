@@ -46,8 +46,6 @@ services:
     backend:
         image: slimstore-backend
         restart: unless-stopped
-        ports:
-            - 8000:8000
         depends_on: 
             - db
         networks:
@@ -58,8 +56,14 @@ services:
         depends_on:
             - backend
         restart: unless-stopped
-        ports:
-            - 3000:3000
+        networks:
+            - dev
+
+    customerdisplay:
+        image: slimstore-customerdisplay
+        depends_on:
+            - backend
+        restart: unless-stopped
         networks:
             - dev
 

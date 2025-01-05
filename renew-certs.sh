@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu/eclipse-workspace/www
+cd /home/ubuntu/dev/slimstore-infrastructure/ 
 docker-compose run --rm certbot renew
 
 # force cert renewal
