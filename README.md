@@ -10,12 +10,21 @@
  
  - Clone the backend repo into a suitable folder
  - Install Eclipse IDE (or similar), along with LOMBOK support
- - Open the project in eclipse and it should build/run on port 8084 out of the box
+ - Open the project in eclipse and it should run on port 8084 out of the box
 
 ### Development Frontend
 
  - Clone the frontend repo into a suitable folder
- - Start 
+ - Install VS Code IDE (or similar)
+ - Open the project in VS Code and it should run on port 3001 out of the box
+ - `npm run dev`
+
+### Development Customer Display
+
+ - Clone the customerdisplay repo into a suitable folder
+ - Install VS Code IDE (or similar)
+ - Open the project in VS Code and it should run on port 3002 out of the box
+ - `npm run dev`
 
 ### Development Infratructure
 
