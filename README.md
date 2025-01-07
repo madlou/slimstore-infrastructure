@@ -17,8 +17,16 @@
  - Clone the frontend repo into a suitable folder
  - Start 
 
- ### Development Infratructure
+### Development Infratructure
 
  - Install docker & docker-compose
  - Clone this repo into a suitable folder
- - Run the `build.sh` script
+ - Run the `deploy.sh dev` script
+ 
+## Production Setup
+
+### Production Infratructure
+
+ - Install docker & docker-compose
+ - Clone this repo into a suitable folder
+ - Run the `deploy.sh prod` script
