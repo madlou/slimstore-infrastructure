@@ -1,0 +1,55 @@
+networks:
+    dev:
+        driver: bridge
+
+services:
+
+    db:
+        image: mariadb:10.6
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: db1
+            MYSQL_USER: user1
+            MYSQL_PASSWORD: 1234
+        volumes:
+            - ./database:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - dev
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: unless-stopped
+        ports:
+            - 3307:80
+        depends_on:
+            - db
+        environment:
+            - PMA_ARBITRARY=1
+        networks:
+            - dev
+    redis:
+        image: redis:7.4-alpine
+        restart: unless-stopped
+        ports:
+            - '6379:6379'
+        command: redis-server --save 20 1 --loglevel warning
+        volumes: 
+            - ./redis:/data
+        networks:
+            - dev
+
+    redisinsight:
+        image: redis/redisinsight:latest
+        restart: unless-stopped
+        ports:
+            - '5540:5540'
+#        environment:
+#            - RI_APP_PORT=6379
+#            - RI_APP_HOST=redis
+        depends_on:
+            - redis
+        networks:
+            - dev

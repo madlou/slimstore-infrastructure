@@ -1,12 +1,17 @@
 *.log
 *.pem
 
-certbot/conf/*
-certbot/log/*
-certbot/www/*
-certbot/log/*
-certbot/log/*
-database/*
-!database/empty.txt
-redis/*
-!redis/empty.txt
+prod/certbot/conf/*
+prod/certbot/log/*
+prod/certbot/www/*
+prod/certbot/log/*
+prod/certbot/log/*
+prod/database/*
+!prod/database/empty.txt
+prod/redis/*
+!prod/redis/empty.txt
+
+dev/database/*
+!dev/database/empty.txt
+dev/redis/*
+!dev/redis/empty.txt
