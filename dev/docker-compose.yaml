@@ -36,7 +36,7 @@ services:
         ports:
             - '6379:6379'
         command: redis-server --save 20 1 --loglevel warning
-        volumes: 
+        volumes:
             - ./redis:/data
         networks:
             - dev
@@ -46,9 +46,6 @@ services:
         restart: unless-stopped
         ports:
             - '5540:5540'
-#        environment:
-#            - RI_APP_PORT=6379
-#            - RI_APP_HOST=redis
         depends_on:
             - redis
         networks:

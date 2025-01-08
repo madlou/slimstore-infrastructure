@@ -45,11 +45,11 @@ services:
         build: https://github.com/madlou/slimstore-backend.git
         image: slimstore-backend
         restart: unless-stopped
-        depends_on: 
+        depends_on:
             - db
         networks:
             - prod
-      
+
     frontend:
         build: https://github.com/madlou/slimstore-frontend.git
         image: slimstore-frontend
@@ -91,7 +91,7 @@ services:
         image: redis:7.4-alpine
         restart: unless-stopped
         command: redis-server --save 20 1 --loglevel warning
-        volumes: 
+        volumes:
             - ./redis:/data
         networks:
             - prod
@@ -101,9 +101,6 @@ services:
         restart: unless-stopped
         ports:
             - '82:5540'
-#        environment:
-#            - RI_APP_PORT=6379
-#            - RI_APP_HOST=redis
         depends_on:
             - redis
         networks:
