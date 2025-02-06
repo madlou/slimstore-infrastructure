@@ -1,4 +1,17 @@
-# Slimstore Infrastructure
+# slimstore-infrastructure
+
+## Micro Service
+
+This repository is part of a wider set of repositories that form a set of micro services that complete the whole application.
+
+ - https://github.com/madlou/slimstore-infrastructure
+ - https://github.com/madlou/slimstore-backend
+ - https://github.com/madlou/slimstore-frontend
+ - https://github.com/madlou/slimstore-customerdisplay
+
+The application is currently deployed on the Oracle platform and can be found here:
+
+ - https://slimstore.matthews.cloud/ 
 
 ## Diagram
 ![slimstore drawio](https://github.com/user-attachments/assets/a5cf6318-dca1-492a-9f91-69358774ca11)
