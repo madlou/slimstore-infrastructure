@@ -5,7 +5,6 @@
 
 ## Development Setup
 
-
 ### Development Backend
  
  - Clone the backend repo into a suitable folder
