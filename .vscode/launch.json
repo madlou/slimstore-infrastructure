@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Start All",
+            "configurations": [
+                "Slimstore Backend",
+                "Slimstore Frontend",
+                "Slimstore Customer Display"
+            ],
+        }
+    ]
+}
