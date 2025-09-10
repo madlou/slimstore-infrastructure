@@ -6,6 +6,7 @@ services:
 
     certbot:
         image: certbot/certbot:latest
+        depends_on: nginx
         ports:
             - "80:80"
         command: certonly --non-interactive --agree-tos --standalone --preferred-challenges http-01 --http-01-port 80 --cert-name 'slimstore' -d 'slimstore.matthews.cloud' -v
@@ -70,9 +71,6 @@ services:
 
     nginx:
         image: nginx
-        depends_on:
-            certbot:
-                condition: service_completed_successfully
         restart: unless-stopped
         ports:
             - 80:80

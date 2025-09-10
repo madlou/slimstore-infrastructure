@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu/dev/slimstore-infrastructure/ 
+cd /home/ubuntu/dev/slimstore-infrastructure/prod/
 docker-compose run --rm certbot renew
 
 # force cert renewal
