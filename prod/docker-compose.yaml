@@ -4,20 +4,6 @@ networks:
 
 services:
 
-    certbot:
-        image: certbot/certbot:latest
-        depends_on: 
-            - nginx
-        ports:
-            - "80:80"
-        command: certonly --non-interactive --agree-tos --standalone --preferred-challenges http-01 --http-01-port 80 --cert-name 'slimstore' -d 'slimstore.matthews.cloud' -v
-        volumes:
-            - ./certbot/www/:/var/www/certbot/:rw
-            - ./certbot/conf/:/etc/letsencrypt/:rw
-            - ./certbot/log/letsencrypt/:/var/log/letsencrypt/:rw
-        networks:
-            - prod
-
     db:
         image: mariadb:10.6
         restart: unless-stopped

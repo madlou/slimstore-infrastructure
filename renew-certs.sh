@@ -1,6 +1,8 @@
 #!/bin/bash
 cd /home/ubuntu/dev/slimstore-infrastructure/prod/
-docker-compose run --rm certbot renew
+COMPOSE_PROJECT_NAME=slimstore-prod docker-compose down
+docker-compose -f docker-compose-certbot.yaml up
+COMPOSE_PROJECT_NAME=slimstore-prod docker-compose up -d
 
 # force cert renewal
 # docker-compose run --rm certbot renew --force-renewal
