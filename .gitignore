@@ -15,3 +15,6 @@ dev/database/*
 !dev/database/empty.txt
 dev/redis/*
 !dev/redis/empty.txt
+
+# direnv
+.direnv/
